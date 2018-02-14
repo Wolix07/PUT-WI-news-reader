@@ -32,8 +32,24 @@ def main():
                 pushed = True
         c += 1
 
+
+    try:
+        plik = open('content.txt')
+        tekst = plik.read().split(" ")
+    finally:
+        plik.close()
+    plik2 = open('content.txt', 'w')
     for lin in lst:
         print (lin)
-    time.sleep(3)
+    lst = list(filter(None, lst))
+    plik2.writelines(lst)
+    plik.close()
+    if tekst[0][:10] == lst[0]:
+        print("stare")
+    else:
+        print("\nCoś nowego!!!!")
+        time.sleep(30)
+    time.sleep(1)
+
 if __name__ == '__main__':
     main()
